@@ -1,0 +1,141 @@
+{
+  "total_tests": 22,
+  "passed_tests": 22,
+  "failed_tests": 0,
+  "success_rate": 100.0,
+  "test_results": [
+    {
+      "test": "API Root",
+      "success": true,
+      "details": "Status: 200 (expected 200)",
+      "response_data": null
+    },
+    {
+      "test": "Health Check",
+      "success": true,
+      "details": "Status: 200 (expected 200)",
+      "response_data": null
+    },
+    {
+      "test": "Create Contact Submission",
+      "success": true,
+      "details": "Status: 201 (expected 201)",
+      "response_data": null
+    },
+    {
+      "test": "Contact Submission - Missing Required Field",
+      "success": true,
+      "details": "Status: 422 (expected 422)",
+      "response_data": null
+    },
+    {
+      "test": "Contact Submission - Invalid Email",
+      "success": true,
+      "details": "Status: 422 (expected 422)",
+      "response_data": null
+    },
+    {
+      "test": "Admin Login - Correct Password",
+      "success": true,
+      "details": "Status: 200 (expected 200)",
+      "response_data": null
+    },
+    {
+      "test": "Admin Login - Wrong Password",
+      "success": true,
+      "details": "Status: 401 (expected 401)",
+      "response_data": null
+    },
+    {
+      "test": "Admin Login - Empty Password",
+      "success": true,
+      "details": "Status: 401 (expected 401)",
+      "response_data": null
+    },
+    {
+      "test": "Admin Me - With Token",
+      "success": true,
+      "details": "Status: 200 (expected 200)",
+      "response_data": null
+    },
+    {
+      "test": "Admin Me - Without Token",
+      "success": true,
+      "details": "Status: 401 (expected 401)",
+      "response_data": null
+    },
+    {
+      "test": "Admin Me - Invalid Token",
+      "success": true,
+      "details": "Status: 401 (expected 401)",
+      "response_data": null
+    },
+    {
+      "test": "List Submissions",
+      "success": true,
+      "details": "Status: 200 (expected 200)",
+      "response_data": null
+    },
+    {
+      "test": "Get Specific Submission",
+      "success": true,
+      "details": "Status: 200 (expected 200)",
+      "response_data": null
+    },
+    {
+      "test": "Update Submission Status",
+      "success": true,
+      "details": "Status: 200 (expected 200)",
+      "response_data": null
+    },
+    {
+      "test": "Update Submission - Invalid Status",
+      "success": true,
+      "details": "Status: 400 (expected 400)",
+      "response_data": null
+    },
+    {
+      "test": "Get Non-existent Submission",
+      "success": true,
+      "details": "Status: 404 (expected 404)",
+      "response_data": null
+    },
+    {
+      "test": "Update Non-existent Submission",
+      "success": true,
+      "details": "Status: 404 (expected 404)",
+      "response_data": null
+    },
+    {
+      "test": "Delete Non-existent Submission",
+      "success": true,
+      "details": "Status: 404 (expected 404)",
+      "response_data": null
+    },
+    {
+      "test": "Unauthorized GET admin/submissions",
+      "success": true,
+      "details": "Status: 401 (expected 401)",
+      "response_data": null
+    },
+    {
+      "test": "Unauthorized GET admin/submissions/test-id",
+      "success": true,
+      "details": "Status: 401 (expected 401)",
+      "response_data": null
+    },
+    {
+      "test": "Unauthorized PATCH admin/submissions/test-id",
+      "success": true,
+      "details": "Status: 401 (expected 401)",
+      "response_data": null
+    },
+    {
+      "test": "Unauthorized DELETE admin/submissions/test-id",
+      "success": true,
+      "details": "Status: 401 (expected 401)",
+      "response_data": null
+    }
+  ],
+  "created_submission_id": "9dbc5581-5b04-4f78-88f0-ea0eb61accc6"
+}

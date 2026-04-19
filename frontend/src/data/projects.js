@@ -1,0 +1,106 @@
+export const projects = [
+  {
+    slug: "ember-health",
+    index: "01",
+    client: "Ember Health",
+    sector: "Healthcare · Series A",
+    year: "2025",
+    tagline: "A cardiology platform that feels like a second heartbeat.",
+    summary:
+      "Ember is rebuilding post-operative cardiac care. We turned a clinical SaaS into an emotional product — one that clinicians trust and patients can actually feel.",
+    challenge:
+      "Ember had the science, the pilot data, and an enterprise deck. What it didn't have was a web presence that matched the weight of saving lives. Their old site read like a dashboard changelog.",
+    story:
+      "We reframed Ember as a continuous companion, not a product. The narrative moves from fear (what happens after surgery?) to clarity (a team watching over you) to conviction (outcomes nobody else delivers).",
+    direction:
+      "Deep clinical navy, warm off-white body, a slow EKG line that scrolls with the reader. Editorial typography that treats the patient stories as articles, not testimonials.",
+    outcome:
+      "Inbound from three health systems within two weeks of launch. Series A closed 60 days later.",
+    palette: ["#0E1726", "#6E9CFF", "#F1ECE1"],
+    gradient: "linear-gradient(135deg, #0E1726 0%, #203554 40%, #6E9CFF 100%)",
+    stats: [
+      { k: "2 wks", v: "Build time" },
+      { k: "3", v: "Health systems reached" },
+      { k: "×4", v: "Avg. session duration" }
+    ]
+  },
+  {
+    slug: "northshore-ai",
+    index: "02",
+    client: "Northshore",
+    sector: "AI Infra · Pre-seed",
+    year: "2025",
+    tagline: "Hard infrastructure, written like literature.",
+    summary:
+      "Northshore builds high-performance inference clusters. Their previous site explained the chipset. We made engineers want to work there.",
+    challenge:
+      "Every infra startup's homepage looks like a whitepaper with three pricing tiers. Northshore needed a site that attracted senior engineers and serious partners — not just search traffic.",
+    story:
+      "We opened with the founder's thesis in a single sentence, then let the product disappear for two scrolls. By the time specs show up, the reader is already believing.",
+    direction:
+      "Graphite base, a single hairline accent, monospaced numerics that count in real time. Motion kept surgical; weight carried by type.",
+    outcome:
+      "Two marquee design partners signed in the first month. 3x more qualified engineer applications.",
+    palette: ["#0A0A0B", "#8AE3FF", "#E8E4DA"],
+    gradient: "linear-gradient(135deg, #050609 0%, #0F1419 50%, #2A4A5C 100%)",
+    stats: [
+      { k: "1 wk", v: "First draft" },
+      { k: "2", v: "Design partners signed" },
+      { k: "×3", v: "Engineering applications" }
+    ]
+  },
+  {
+    slug: "curio-learn",
+    index: "03",
+    client: "Curio",
+    sector: "Education · Seed",
+    year: "2024",
+    tagline: "A school on the internet that doesn't feel like one.",
+    summary:
+      "Curio is a cohort-based learning platform for ambitious teens. We made their site feel like the place those teens already wanted to belong.",
+    challenge:
+      "Parents needed trust. Students needed desire. The old site was doing neither — too much copy, not enough character, zero emotional pull.",
+    story:
+      "Two narrative lanes on the home: one for parents (outcomes, safety, rigor), one for students (belonging, aesthetic, autonomy). Same site, two truths.",
+    direction:
+      "Warm editorial palette, handwritten accents, student portraits treated like magazine covers. Motion used to move the reader through a day at Curio.",
+    outcome:
+      "Applications doubled in the first cohort window. The first parent-student aligned landing page in the category.",
+    palette: ["#121014", "#F4B968", "#F4EFE7"],
+    gradient: "linear-gradient(135deg, #1A1619 0%, #3B2D28 45%, #C98A4B 100%)",
+    stats: [
+      { k: "48 h", v: "Landing page" },
+      { k: "×2", v: "Cohort applications" },
+      { k: "−0", v: "Support tickets on launch" }
+    ]
+  },
+  {
+    slug: "halcyon-studio",
+    index: "04",
+    client: "Halcyon",
+    sector: "Consumer product · Seed",
+    year: "2024",
+    tagline: "A calm app that earned its calm website.",
+    summary:
+      "Halcyon is a sleep companion that actually works. The old site was loud, busy, and forgettable — the opposite of the product.",
+    challenge:
+      "Halcyon had a beautiful product and a chaotic marketing surface. The first thing a user saw made them not trust what came after.",
+    story:
+      "One headline. One breath. One button. A site that stages the product with the same discipline the product stages your night.",
+    direction:
+      "Near-black with a slow indigo drift. Type set wide. The nav disappears until you need it. Everything earns its place.",
+    outcome:
+      "Bounce cut by 38%. Paid conversion up 62%. First featured in three design publications.",
+    palette: ["#0A0A14", "#A7B4FF", "#EFEAE0"],
+    gradient: "linear-gradient(135deg, #05050A 0%, #161632 55%, #5A66B8 100%)",
+    stats: [
+      { k: "−38%", v: "Bounce rate" },
+      { k: "+62%", v: "Paid conversion" },
+      { k: "3", v: "Editorial features" }
+    ]
+  }
+];
+
+export function getProject(slug) {
+  return projects.find((p) => p.slug === slug);
+}

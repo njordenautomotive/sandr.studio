@@ -1,0 +1,38 @@
+[
+  {
+    "content": "Install framer-motion for cinematic motion",
+    "status": "completed"
+  },
+  {
+    "content": "Backend: Contact form API + admin auth + submissions endpoints",
+    "status": "completed"
+  },
+  {
+    "content": "Frontend: Design system (tokens, typography, layout shell, nav, footer)",
+    "status": "completed"
+  },
+  {
+    "content": "Frontend: Home page with full story arc (hero → problem → solution → services → why → speed → work → process → about teaser → CTA)",
+    "status": "completed"
+  },
+  {
+    "content": "Frontend: Work list + Work detail pages with 4 concept projects",
+    "status": "completed"
+  },
+  {
+    "content": "Frontend: Services, Process, About, Contact pages",
+    "status": "completed"
+  },
+  {
+    "content": "Frontend: Admin login + dashboard (password-gated)",
+    "status": "completed"
+  },
+  {
+    "content": "Motion system: scroll reveals, hero entrance, page transitions",
+    "status": "completed"
+  },
+  {
+    "content": "End-to-end testing via testing_agent_v3 with full user stories",
+    "status": "in_progress"
+  }
+]
