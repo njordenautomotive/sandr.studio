@@ -6,12 +6,10 @@ export default function CustomCursor() {
   const dotRef = useRef(null);
   const ringRef = useRef(null);
   const auraRef = useRef(null);
-  const labelRef = useRef(null);
   const targetRef = useRef({ x: 0, y: 0 });
   const ringStateRef = useRef({ x: 0, y: 0 });
   const auraStateRef = useRef({ x: 0, y: 0 });
   const [state, setState] = useState("default"); // default | link | press | text | drag
-  const [label, setLabel] = useState("");
   const [isCoarse, setIsCoarse] = useState(false);
 
   useEffect(() => {
@@ -36,22 +34,12 @@ export default function CustomCursor() {
         setState("text");
         return;
       }
-      const explicitLabel = el.getAttribute && el.getAttribute("data-cursor-label");
-      if (explicitLabel) {
-        setLabel(explicitLabel);
-        setState("link");
-        return;
-      }
-      if (tag === "a") { setLabel("Open"); setState("link"); return; }
-      if (tag === "button" || el.getAttribute("role") === "button") { setLabel("Go"); setState("link"); return; }
-      setLabel("");
       setState("link");
     };
     const onOut = (e) => {
       const nextEl = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(HOVER_SELECTORS) : null;
       if (!nextEl) {
         setState("default");
-        setLabel("");
       }
     };
 
@@ -97,9 +85,7 @@ export default function CustomCursor() {
     <div className={`cursor-root cursor-state-${state}`} aria-hidden>
       <div ref={auraRef} className="cursor-aura" />
       <div ref={dotRef} className="cursor-dot" />
-      <div ref={ringRef} className="cursor-ring">
-        <span ref={labelRef} className="cursor-label">{label || (state === "link" ? "Go" : "")}</span>
-      </div>
+      <div ref={ringRef} className="cursor-ring" />
     </div>
   );
 }

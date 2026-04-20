@@ -294,25 +294,14 @@ body::after {
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
 }
-.cursor-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #08070C;
-    opacity: 0;
-    transition: opacity 280ms var(--ease);
-    font-weight: 500;
-    white-space: nowrap;
-}
+.cursor-label { display: none; }
 .cursor-state-link .cursor-ring {
-    width: 86px; height: 86px;
-    background: var(--silver-blue);
+    width: 54px; height: 54px;
+    background: transparent;
     border-color: var(--silver-blue);
-    box-shadow: 0 0 40px var(--silver-glow);
+    box-shadow: 0 0 32px var(--silver-glow);
 }
-.cursor-state-link .cursor-label { opacity: 1; }
-.cursor-state-link .cursor-dot { opacity: 0; }
+.cursor-state-link .cursor-dot { opacity: 1; }
 .cursor-state-press .cursor-ring { width: 24px; height: 24px; background: var(--amber); border-color: var(--amber); box-shadow: 0 0 30px var(--amber-glow); }
 .cursor-state-press .cursor-dot { background: #08070C; }
 .cursor-state-drag .cursor-ring { width: 120px; height: 120px; background: var(--violet); border-color: var(--violet); opacity: 0.25; }
