@@ -1,35 +1,53 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Reveal, { MaskReveal } from "@/components/Reveal";
+import KineticWord from "@/components/KineticWord";
+import AmbientOrb from "@/components/AmbientOrb";
 
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <div className="container-x">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <p className="eyebrow eyebrow-dot" style={{ marginBottom: 22 }}>Start your build</p>
-          <div className="big">
-            The internet does not<br />
-            need another <i style={{ color: "var(--accent)" }}>generic</i> site.
+      <AmbientOrb color="var(--cobalt)" size={720} blur={120} opacity={0.35} style={{ left: "-10%", top: "-10%" }} />
+      <AmbientOrb color="var(--violet)" size={620} blur={120} opacity={0.3} style={{ right: "-5%", bottom: "-10%" }} />
+      <div className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.3, pointerEvents: "none" }} />
+
+      <div className="container-x" style={{ position: "relative", zIndex: 2 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 12 }}>
+          <Reveal><span className="coord">— Closing scene · sandr.studio</span></Reveal>
+          <Reveal delay={0.08}><span className="coord">{new Date().getFullYear()} · Made to be remembered</span></Reveal>
+        </div>
+
+        <MaskReveal delay={0.1}>
+          <div className="display" style={{ fontSize: "clamp(60px, 12vw, 220px)", marginTop: 48, lineHeight: 0.86, letterSpacing: "-0.04em" }}>
+            Make them <span className="display-italic" style={{ color: "var(--cobalt)" }}>stop</span>.
           </div>
-          <div style={{ marginTop: 40, display: "flex", gap: 14, flexWrap: "wrap" }}>
+        </MaskReveal>
+        <MaskReveal delay={0.2}>
+          <div className="display" style={{ fontSize: "clamp(60px, 12vw, 220px)", marginTop: 8, lineHeight: 0.86, letterSpacing: "-0.04em" }}>
+            Make them <span className="display-italic" style={{ color: "var(--violet)" }}>feel</span>.
+          </div>
+        </MaskReveal>
+        <MaskReveal delay={0.3}>
+          <div className="display" style={{ fontSize: "clamp(60px, 12vw, 220px)", marginTop: 8, lineHeight: 0.86, letterSpacing: "-0.04em" }}>
+            Make them <span className="display-italic" style={{ color: "var(--amber)" }}>remember</span>.
+          </div>
+        </MaskReveal>
+
+        <Reveal delay={0.4}>
+          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 70 }}>
             <Link to="/contact" className="btn btn-primary" data-testid="footer-cta-primary">
               Start your build
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M10 7h7v7" /></svg>
             </Link>
-            <Link to="/work" className="btn btn-ghost" data-testid="footer-cta-secondary">See selected work</Link>
+            <Link to="/work" className="btn btn-ghost" data-testid="footer-cta-secondary">Enter the work</Link>
           </div>
-        </motion.div>
+        </Reveal>
 
-        <div className="cols">
+        <div className="footer-cols">
           <div className="col">
             <h5>sandr.studio</h5>
-            <p style={{ color: "var(--ink-dim)", maxWidth: 420, fontSize: 14, lineHeight: 1.7 }}>
-              A story-first web studio for startups. Founder-led by Sander Lindseth &amp; Sirin Thamakaison.
+            <p style={{ color: "var(--ink-dim)", maxWidth: 460, fontSize: 15, lineHeight: 1.7 }}>
+              A story-first web studio for startups. Founder-led by Sander Lindseth &amp; Sirin Thamakaison. Made in quiet rooms, shipped with noise.
             </p>
           </div>
           <div className="col">
@@ -52,10 +70,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div style={{ marginTop: 60, display: "flex", justifyContent: "space-between", color: "var(--ink-mute)", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", flexWrap: "wrap", gap: 12 }}>
-            <span>© {new Date().getFullYear()} sandr studio</span>
-            <span>Built by builders with taste</span>
-            <span style={{ color: "var(--ink-mute)" }}>v1.0</span>
+        <div className="hairline" style={{ marginTop: 80, marginBottom: 28 }} />
+        <div style={{ display: "flex", justifyContent: "space-between", color: "var(--ink-mute)", flexWrap: "wrap", gap: 12 }}>
+          <span className="coord">© {new Date().getFullYear()} — sandr studio</span>
+          <span className="coord">Built by <KineticWord words={["builders with taste", "a studio, not a factory", "two people", "humans on purpose"]} /></span>
+          <span className="coord">v2 — anti-template</span>
         </div>
       </div>
     </footer>

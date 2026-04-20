@@ -1,50 +1,88 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import PageShell from "@/components/PageShell";
-import Reveal from "@/components/Reveal";
-import ProjectVisual from "@/components/ProjectVisual";
+import Reveal, { MaskReveal } from "@/components/Reveal";
+import SceneVisual from "@/components/SceneVisual";
+import AmbientOrb from "@/components/AmbientOrb";
 import { projects } from "@/data/projects";
+import { ease } from "@/lib/motion";
 
 export default function Work() {
   return (
     <PageShell testid="page-work">
-      <section className="section" style={{ paddingTop: 200 }} data-testid="work-hero">
-        <div className="container-x">
-          <Reveal>
-            <p className="eyebrow eyebrow-dot">Selected work</p>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h1 className="font-display" style={{ fontSize: "clamp(60px, 9vw, 160px)", marginTop: 28, lineHeight: 0.95, letterSpacing: "-0.03em", maxWidth: "16ch" }}>
-              Four startups. Four <i style={{ color: "var(--accent)" }}>stories</i> worth remembering.
+      <section style={{ paddingTop: 220, paddingBottom: 80, position: "relative" }}>
+        <AmbientOrb color="var(--cobalt)" size={720} blur={140} opacity={0.3} style={{ right: "-10%", top: "10%" }} />
+        <div className="container-x" style={{ position: "relative", zIndex: 2 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 12 }}>
+            <Reveal><span className="coord">Selected scenes — 2024 → 2025</span></Reveal>
+            <Reveal delay={0.08}><span className="coord">04 chapters · Concept &amp; client</span></Reveal>
+          </div>
+          <MaskReveal delay={0.1}>
+            <h1 className="display" style={{ fontSize: "clamp(72px, 13vw, 240px)", marginTop: 48, lineHeight: 0.86, letterSpacing: "-0.045em" }}>
+              Not a <span className="display-italic" style={{ color: "var(--violet)" }}>portfolio</span>.
             </h1>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <p style={{ marginTop: 34, maxWidth: 620, color: "var(--ink-dim)", fontSize: 18, lineHeight: 1.65 }}>
+          </MaskReveal>
+          <MaskReveal delay={0.2}>
+            <h1 className="display" style={{ fontSize: "clamp(72px, 13vw, 240px)", lineHeight: 0.86, letterSpacing: "-0.045em", textAlign: "right" }}>
+              A <span className="display-italic" style={{ color: "var(--cobalt)" }}>reel</span>.
+            </h1>
+          </MaskReveal>
+          <Reveal delay={0.3}>
+            <p style={{ marginTop: 40, maxWidth: 520, color: "var(--ink-dim)", fontSize: 18, lineHeight: 1.7, marginLeft: "auto" }}>
               Concept projects we'd be proud to ship tomorrow. Real founder problems, real story-first answers, real design and motion direction.
             </p>
           </Reveal>
         </div>
       </section>
 
-      <section style={{ paddingBottom: 120 }}>
-        <div className="container-x">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))", gap: 28 }}>
-            {projects.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 0.06}>
-                <Link to={`/work/${p.slug}`} className="proj-card" data-testid={`work-card-${p.slug}`}>
-                  <ProjectVisual project={p} />
-                  <div className="meta">
-                    <div>
-                      <div className="tag">{p.sector}</div>
-                      <div className="title" style={{ marginTop: 10 }}>{p.tagline}</div>
-                    </div>
-                    <span className="eyebrow">Case ↗</span>
+      {projects.map((p, i) => {
+        const flipped = i % 2 === 1;
+        return (
+          <section key={p.slug} style={{ paddingTop: 100, paddingBottom: 100, borderTop: "1px solid var(--line)" }} data-testid={`work-card-${p.slug}`}>
+            <div className="container-x">
+              <Link to={`/work/${p.slug}`} style={{ textDecoration: "none", color: "inherit", display: "block" }}>
+                <div style={{ display: "grid", gridTemplateColumns: flipped ? "1fr 1.5fr" : "1.5fr 1fr", gap: 70, alignItems: "center" }} className="work-chapter">
+                  <div style={{ order: flipped ? 2 : 1 }}>
+                    <Reveal delay={0.04}>
+                      <div style={{ display: "flex", alignItems: "baseline", gap: 20 }}>
+                        <span className="display display-italic" style={{ fontSize: "clamp(48px, 6vw, 96px)", color: "var(--cobalt)", lineHeight: 1 }}>{p.index}</span>
+                        <span className="coord">{p.sector}</span>
+                      </div>
+                    </Reveal>
+                    <MaskReveal delay={0.1}>
+                      <h2 className="display" style={{ fontSize: "clamp(48px, 7vw, 112px)", lineHeight: 0.92, letterSpacing: "-0.035em", marginTop: 20 }}>
+                        {p.client}
+                      </h2>
+                    </MaskReveal>
+                    <Reveal delay={0.2}>
+                      <p style={{ marginTop: 28, fontSize: 20, lineHeight: 1.55, color: "var(--ink-2)", fontStyle: "italic", maxWidth: 480 }}>“{p.tagline}”</p>
+                    </Reveal>
+                    <Reveal delay={0.26}>
+                      <p style={{ marginTop: 20, fontSize: 15, lineHeight: 1.75, color: "var(--ink-dim)", maxWidth: 480 }}>
+                        {p.summary}
+                      </p>
+                    </Reveal>
+                    <Reveal delay={0.32}>
+                      <div className="btn-link" style={{ marginTop: 36 }}>
+                        Enter the scene
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M10 7h7v7" /></svg>
+                      </div>
+                    </Reveal>
                   </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+                  <motion.div
+                    style={{ order: flipped ? 1 : 2 }}
+                    whileHover={{ scale: 1.015 }}
+                    transition={{ duration: 0.9, ease }}
+                  >
+                    <MaskReveal delay={0.1}><SceneVisual project={p} /></MaskReveal>
+                  </motion.div>
+                </div>
+              </Link>
+              <style>{`@media(max-width: 900px){ .work-chapter { grid-template-columns: 1fr !important; gap: 36px !important; } .work-chapter > div:first-child { order: 1 !important; } .work-chapter > div:last-child { order: 2 !important; } }`}</style>
+            </div>
+          </section>
+        );
+      })}
     </PageShell>
   );
 }

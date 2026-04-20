@@ -1,38 +1,38 @@
 [
   {
-    "content": "Install framer-motion for cinematic motion",
+    "content": "New type system: Fraunces (variable display) + DM Sans (body) + JetBrains Mono (labels)",
     "status": "completed"
   },
   {
-    "content": "Backend: Contact form API + admin auth + submissions endpoints",
+    "content": "New color system: deeper midnight + electric cobalt + ultraviolet + cold luminous white glow + rare burnt amber",
     "status": "completed"
   },
   {
-    "content": "Frontend: Design system (tokens, typography, layout shell, nav, footer)",
+    "content": "New motion system: kinetic word cycling, masked reveals, mouse parallax, scene transitions",
     "status": "completed"
   },
   {
-    "content": "Frontend: Home page with full story arc (hero → problem → solution → services → why → speed → work → process → about teaser → CTA)",
+    "content": "Redesign Home: asymmetric cinematic hero + thesis + narrative value scenes + reinvented offer + immersive work chapters + new process + emotional closing",
     "status": "completed"
   },
   {
-    "content": "Frontend: Work list + Work detail pages with 4 concept projects",
+    "content": "Redesign Work list: immersive alternating chapter spreads (no card grid)",
     "status": "completed"
   },
   {
-    "content": "Frontend: Services, Process, About, Contact pages",
+    "content": "Redesign Services/Process/About/Contact with new visual system",
     "status": "completed"
   },
   {
-    "content": "Frontend: Admin login + dashboard (password-gated)",
+    "content": "Refresh Nav + Footer + Admin with new tokens",
     "status": "completed"
   },
   {
-    "content": "Motion system: scroll reveals, hero entrance, page transitions",
+    "content": "Update copy to v2 voice (bolder, confrontational, emotional)",
     "status": "completed"
   },
   {
-    "content": "End-to-end testing via testing_agent_v3 with full user stories",
-    "status": "completed"
+    "content": "Regression test: backend APIs + admin still work after redesign",
+    "status": "in_progress"
   }
 ]
