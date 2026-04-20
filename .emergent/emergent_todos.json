@@ -20,7 +20,7 @@
     "status": "completed"
   },
   {
-    "content": "Easter eggs (nav dot, founder names, OSL/BKK, v3 tag, v3—alive)",
+    "content": "Easter eggs (nav dot, founder names, OSL/BKK, v3 tag)",
     "status": "completed"
   },
   {
@@ -32,7 +32,7 @@
     "status": "completed"
   },
   {
-    "content": "Regression test: backend + admin intact + new interactions working",
-    "status": "in_progress"
+    "content": "Regression test: backend 100% (22/22) + frontend 99% (only non-critical console warning)",
+    "status": "completed"
   }
 ]

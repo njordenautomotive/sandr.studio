@@ -1,14 +1,14 @@
-# plan.md (updated — v2 anti-template redesign)
+# plan.md (updated — v3 motion-rich anti-template)
 
 ## 1) Objectives
 - ✅ Ship a premium, cinematic, **anti-template** marketing site for **sandr.studio** that communicates in under 10 seconds:
   - **“Story-driven websites for startups that refuse to look generic.”**
 - ✅ Deliver multi-page IA: **Home, Work, Work Detail, Services, Process, About, Contact + hidden Admin**.
 - ✅ Core workflow: **Contact form → FastAPI → MongoDB**, plus **password-gated Admin** to review submissions.
-- ✅ Establish a cohesive v2 design/motion system with **radical visual departure from v1**:
-  - Typography: **Fraunces** (display) + **DM Sans** (body) + **JetBrains Mono** (labels)
-  - Color: deeper midnight base + **electric cobalt** + **ultraviolet** + cold luminous glow + rare burnt amber
-  - Motion: kinetic word cycling, mask reveals, mouse parallax, scroll-driven atmosphere, film grain
+- ✅ Establish a cohesive **v3 motion-rich design/interaction system** with zero carry-over from v2:
+  - Typography: **Syne** (display) + **Inter Tight** (body) + **JetBrains Mono** (labels)
+  - Accent strategy: **silver-blue (#A8C6FF)** dominant (cursor + signature moments), cobalt emphasis, violet atmosphere, rare amber warmth
+  - Interactions: **custom cursor**, **sand-reactive text**, **page intro overlays**, **satisfying click/ripple buttons**, **easter eggs**
 - 🔜 (Optional next) Prepare for production + future content swapping:
   - Swap concept work → real case studies without rewriting UI.
   - Add anti-spam + notifications + export.
@@ -90,56 +90,66 @@
 
 ---
 
-### Phase 3 — V2 Anti-template redesign (radical overhaul) ✅ Completed
-**Goal:** A complete authored redesign with **zero template feel** and **zero carry-over** of v1’s Instrument Serif + steel-blue system.
+### Phase 3 — V2 Anti-template redesign (radical authored overhaul) ✅ Completed
+**Goal:** A complete authored redesign with **zero template feel** and **zero carry-over** of v1’s initial system.
 
 **What shipped (v2):**
-- ✅ **Typography system (new):**
-  - Display: **Fraunces** variable (opsz-driven), italic highlights for kinetic moments
-  - Body: **DM Sans**
-  - Labels/coords: **JetBrains Mono**
-- ✅ **Color system (new):**
-  - Base: **#08070C** midnight
-  - Primary accent: **electric cobalt #4A5BFF**
-  - Secondary accent: **ultraviolet #8B3FFF**
-  - Atmosphere: cold luminous white glow + grain
-  - Rare accent: **burnt amber #E5A554** used sparingly (closing line)
-- ✅ **Motion system (new):**
-  - `KineticWord` cycling words (blur + slide)
-  - Masked `clip-path` reveals (`MaskReveal`)
-  - Mouse parallax (hero orbs)
-  - Scroll-driven orb layers
-  - Animated film-grain texture (stepped frames)
-  - Page-level blur transitions
-
-**Information architecture + page redesign (v2):**
-- ✅ **Home (fully restructured, scene-based, asymmetric):**
-  - Asymmetric cinematic hero (broken across viewport, kinetic italic word)
-  - Thesis scene (strike-through + replacement)
-  - Narrative-value 3-beat scene (no cards; alternating rows)
-  - Offer scene (alternating editorial list; odd/even flipped)
-  - Work chapters (immersive alternating spreads; no grid)
-  - Process teaser with v2 copy on a vertical timeline with cobalt nodes:
-    - **Find the story → Shape the feeling → Build the experience → Launch with weight**
-  - About teaser
-  - Emotional closing footer: **“Make them stop / feel / remember.”**
-- ✅ **Work index:** alternating chapter spreads (not a card grid)
-- ✅ **Work detail:** giant client hero + italic tagline + mask-revealed scene visual + numbered sections + cobalt stats + next-chapter CTA
-- ✅ **Services:** asymmetric scene per service (big italic number / display name / body + price) + always/never/optional matrix
-- ✅ **Process:** 4 moves (new v2 copy), each as a scene with roman numerals
-- ✅ **About:** founder scene cards (initials as typography) + numbered belief rows
-- ✅ **Contact:** same qualifying fields; new scene header; cobalt success state
-- ✅ **Admin:** functionality unchanged; refreshed visuals with v2 tokens
+- ✅ **Typography:** Fraunces (display) + DM Sans (body) + JetBrains Mono (labels)
+- ✅ **Color:** midnight base + electric cobalt + ultraviolet + cold glow + rare amber
+- ✅ **Motion:** kinetic word cycling, mask reveals, parallax, scroll-driven atmosphere, film grain
+- ✅ **IA:** scene-based asymmetric home + immersive work chapters + new process copy
 
 **End Phase 3 testing:** ✅ Completed
 - ✅ Regression testing:
   - ✅ Backend: **100% (22/22)**
   - ✅ Frontend: **98%**
-  - ⚠️ Only flagged item was a Playwright click-interception note on `admin-logout` (LOW priority). Manually verified: **logout works end-to-end** (dashboard → login).
+  - ⚠️ Only flagged item was a Playwright click-interception note on `admin-logout` (LOW). Manually verified: logout worked.
 
 ---
 
-### Phase 4 — Hardening + small upgrades (production-friendly MVP) 🔜 Optional / Next
+### Phase 4 — V3 Motion-rich anti-template overhaul (interaction-first) ✅ Completed
+**Goal:** Push the site into a **motion-rich, interaction-forward** experience (Gen‑Z energy, authored feel), while keeping backend/admin stable.
+
+**Major changes from v2 (v3 requirements):**
+- ✅ **Typography system flipped again (non-negotiable):**
+  - Display: **Syne** (expressive bold grotesque)
+  - Body: **Inter Tight**
+  - Labels: **JetBrains Mono**
+  - Result: **zero visual carry-over** from v2.
+- ✅ **Homepage restructured (critical):**
+  - ✅ **Removed the Work showcase from the homepage** entirely.
+  - ✅ New home flow:
+    - `home-hero` → `home-thesis` → `home-narrative` → `home-services` → `home-process` (velocity + moves) → `home-environment` → `home-final-cta`
+  - ✅ Editorial eyebrows reduced; motion and pacing carry orientation.
+- ✅ **Custom cursor system (desktop):**
+  - Dot + ring + aura trail with spring lag
+  - States: default / link (expanded with verb label) / press (amber flash + compress) / text (hides on inputs) / drag
+  - Hides native cursor on fine pointers; preserves caret usability on inputs.
+- ✅ **Sand-reactive text:**
+  - Per-letter cursor-proximity displacement (push-away), blur, silver-blue color shift, glow shadow, reform on leave
+  - Applied to hero headline, environment manifesto, contact hero, and footer closing.
+- ✅ **Page intro overlays:**
+  - On navigation to **Work / Services / Process / About / Contact** a 1s full-bleed intro overlay appears with unique copy.
+- ✅ **Satisfying button clicks:**
+  - `.btn` press compression + global click-position ripple effect (App-level handler).
+- ✅ **Easter eggs:**
+  - Hidden hover tooltips on nav dot, OSL/BKK coord, founder names in footer, v3 tags, and founder cards.
+- ✅ **Accent shift:**
+  - **silver-blue (#A8C6FF)** promoted to dominant accent for cursor + signature moments
+  - cobalt retained for emphasis; violet for atmospheric gradients; amber as rare warmth.
+- ✅ **Admin surface:**
+  - Visual tokens refreshed to match v3
+  - Functionality unchanged.
+
+**End Phase 4 testing:** ✅ Completed
+- ✅ testing_agent_v3 regression (iteration_3):
+  - ✅ Backend: **100% (22/22)**
+  - ✅ Frontend: **99%**
+  - ⚠️ Only note: a non-critical console warning about HTML structure (does not affect functionality).
+
+---
+
+### Phase 5 — Hardening + small upgrades (production-friendly MVP) 🔜 Optional / Next
 **User stories (stability + maintainability):**
 1. As a visitor, the site loads fast even with heavier motion/atmosphere.
 2. As a visitor, animations never block readability or navigation.
@@ -162,13 +172,13 @@
 - **Analytics**
   - Add lightweight analytics events for CTA clicks + form submissions.
 
-**End Phase 4:**
+**End Phase 5:**
 - Re-run **testing_agent_v3** for regression after changes.
 
 ---
 
 ## 3) Next Actions
-1. ✅ No action required to use the site as-is (Phases 1–3 shipped; v2 is current).
+1. ✅ No action required to use the site as-is (**Phases 1–4 shipped; v3 is current**).
 2. (Optional) Swap concept projects → real work:
    - Update `/app/frontend/src/data/projects.js` (content only).
 3. (Optional) Production hygiene:
@@ -183,9 +193,12 @@
 ---
 
 ## 4) Success Criteria
-- ✅ Brand: site feels **authored, cinematic, editorial, anti-template**; no visual carry-over from v1.
-- ✅ Visual system: Fraunces + DM Sans + JetBrains Mono; cobalt/ultraviolet accents; atmospheric grain; deliberate asymmetry.
-- ✅ UX: Home reads as a paced narrative (scenes) with a heavy emotional closing.
+- ✅ Brand: site feels **authored, cinematic, anti-template** and now **motion-rich + interactive** (Gen‑Z energy) without sacrificing taste.
+- ✅ Visual system (v3): **Syne + Inter Tight + JetBrains Mono**, silver-blue dominant accent, cursor-led interaction layer.
+- ✅ UX: Home reads fast, then rewards exploration via sand-text, cursor verbs, intros, easter eggs.
+- ✅ IA: Multi-page site intact; **home no longer includes work showcase** (v3 requirement met).
 - ✅ Core: contact submissions reliably persist in MongoDB; success state displayed.
 - ✅ Admin: password-gated access; submissions list + drawer detail view; status updates + delete + logout.
-- ✅ Quality: responsive on mobile/desktop; motion is smooth and non-blocking; testing passes (backend 100%; frontend flows pass; only LOW-priority automation note).
+- ✅ Quality: responsive on mobile/desktop; interactions do not block usability; testing passes:
+  - ✅ Backend **100% (22/22)**
+  - ✅ Frontend **99%** (only non-critical console warning)
