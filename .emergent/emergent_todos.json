@@ -1,38 +1,18 @@
 [
   {
-    "content": "New v3 type system: Syne (display) + Inter Tight (body)",
+    "content": "Make Reveal/MaskReveal reliable — replace whileInView with custom IntersectionObserver + fallback timer",
     "status": "completed"
   },
   {
-    "content": "Custom cursor system with verb states (Open/Enter/Go/Start/Home + press state)",
+    "content": "Fix sand-text letter clipping — let letters escape parent after mask reveal finishes + soften blur/strength",
     "status": "completed"
   },
   {
-    "content": "Sand-reactive text component — hero, final CTA, environment moment",
+    "content": "Fix 1 week / 2 weeks tiers text overflow on Velocity grid",
     "status": "completed"
   },
   {
-    "content": "Page intro cards for subpages (Work, Services, Process, About, Contact)",
-    "status": "completed"
-  },
-  {
-    "content": "Satisfying button click animations (press scale + ripple)",
-    "status": "completed"
-  },
-  {
-    "content": "Easter eggs (nav dot, founder names, OSL/BKK, v3 tag)",
-    "status": "completed"
-  },
-  {
-    "content": "Rebuild Home: REMOVE work chapters; add environment_moment; reduce eyebrows",
-    "status": "completed"
-  },
-  {
-    "content": "Update Nav + Footer + Work/WorkDetail/Services/Process/About/Contact",
-    "status": "completed"
-  },
-  {
-    "content": "Regression test: backend 100% (22/22) + frontend 99% (only non-critical console warning)",
+    "content": "Verify all three fixes with screenshots (home full scroll, sand interaction, velocity section)",
     "status": "completed"
   }
 ]

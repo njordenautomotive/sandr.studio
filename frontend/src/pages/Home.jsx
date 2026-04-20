@@ -38,17 +38,17 @@ function Hero() {
       <motion.div className="container-x" style={{ position: "relative", zIndex: 2, y }}>
         <MaskReveal mount delay={0.1}>
           <div className="display display-heavy" style={{ fontSize: "clamp(44px, 7.5vw, 130px)", lineHeight: 0.92, letterSpacing: "-0.04em" }}>
-            <SandText text="Story-driven websites" radius={220} strength={42} />
+            <SandText text="Story-driven websites" radius={180} strength={22} />
           </div>
         </MaskReveal>
         <MaskReveal mount delay={0.25}>
           <div className="display" style={{ fontSize: "clamp(44px, 7.5vw, 130px)", lineHeight: 0.92, letterSpacing: "-0.04em", marginTop: 2 }}>
-            <SandText text="for startups that" radius={220} strength={42} />
+            <SandText text="for startups that" radius={180} strength={22} />
           </div>
         </MaskReveal>
         <MaskReveal mount delay={0.4}>
           <div className="display display-italic" style={{ fontSize: "clamp(44px, 7.5vw, 130px)", lineHeight: 0.92, letterSpacing: "-0.04em", color: "var(--silver-blue)", marginTop: 2 }}>
-            <SandText text="refuse to look generic." radius={240} strength={48} />
+            <SandText text="refuse to look generic." radius={200} strength={26} />
           </div>
         </MaskReveal>
 
@@ -207,12 +207,12 @@ function Velocity() {
           </h2>
         </MaskReveal>
 
-        <div style={{ marginTop: 100, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 0, border: "1px solid var(--line)" }}>
+        <div style={{ marginTop: 100, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 0, border: "1px solid var(--line)" }}>
           {tiers.map((tier, i, arr) => (
             <Reveal key={i} delay={i * 0.08}>
-              <div style={{ padding: 48, borderRight: i < arr.length - 1 ? "1px solid var(--line)" : "none", background: i === 1 ? "var(--bg-2)" : "transparent", height: "100%" }}>
-                <div className="display display-heavy" style={{ fontSize: "clamp(64px, 8vw, 120px)", color: "var(--silver-blue)", lineHeight: 1, letterSpacing: "-0.03em" }}>{tier.t}</div>
-                <div style={{ marginTop: 14, fontSize: 17, color: "var(--ink)" }}>{tier.l}</div>
+              <div style={{ padding: "56px 32px", borderRight: i < arr.length - 1 ? "1px solid var(--line)" : "none", background: i === 1 ? "var(--bg-2)" : "transparent", height: "100%", overflow: "hidden", minWidth: 0 }}>
+                <div className="display display-heavy" style={{ fontSize: "clamp(40px, 3.6vw, 64px)", color: "var(--silver-blue)", lineHeight: 1, letterSpacing: "-0.03em", whiteSpace: "nowrap" }}>{tier.t}</div>
+                <div style={{ marginTop: 18, fontSize: 15, color: "var(--ink-2)", letterSpacing: "0.02em" }}>{tier.l}</div>
               </div>
             </Reveal>
           ))}
@@ -261,12 +261,12 @@ function EnvironmentMoment() {
         </Reveal>
         <MaskReveal delay={0.1}>
           <div className="display" style={{ fontSize: "clamp(60px, 11vw, 200px)", lineHeight: 0.9, letterSpacing: "-0.045em", marginTop: 40, maxWidth: "18ch", margin: "40px auto 0" }}>
-            <SandText text="Your startup should feel like" radius={200} strength={36} />
+            <SandText text="Your startup should feel like" radius={180} strength={22} />
           </div>
         </MaskReveal>
         <MaskReveal delay={0.24}>
           <div className="display display-italic" style={{ fontSize: "clamp(70px, 13vw, 240px)", lineHeight: 0.88, letterSpacing: "-0.045em", color: "var(--silver-blue)", marginTop: 10 }}>
-            <SandText text="something." radius={220} strength={40} />
+            <SandText text="something." radius={200} strength={26} />
           </div>
         </MaskReveal>
         <Reveal delay={0.4}>

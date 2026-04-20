@@ -55,22 +55,24 @@ export default function SandText({ text, radius = 160, strength = 24, className 
         let targetTx = 0, targetTy = 0, targetBlur = 0, targetGlow = 0;
         if (dist < radius) {
           const p = 1 - dist / radius; // 0..1
+          // ease the response curve so letters barely react at the edges
+          const e = p * p; // quadratic ease-in
           const angle = Math.atan2(dy, dx);
-          targetTx = -Math.cos(angle) * strength * p;
-          targetTy = -Math.sin(angle) * strength * p;
-          targetBlur = Math.min(4, p * 3);
+          targetTx = -Math.cos(angle) * strength * e;
+          targetTy = -Math.sin(angle) * strength * e;
+          targetBlur = e * 1.4; // gentle blur (was up to 4px — felt like it "cut" letters)
           targetGlow = p;
         }
         // smooth approach (frame-rate independent-ish at 60fps)
-        s.tx = lerp(s.tx, targetTx, 0.18);
-        s.ty = lerp(s.ty, targetTy, 0.18);
-        s.blur = lerp(s.blur, targetBlur, 0.18);
-        s.glow = lerp(s.glow, targetGlow, 0.18);
+        s.tx = lerp(s.tx, targetTx, 0.16);
+        s.ty = lerp(s.ty, targetTy, 0.16);
+        s.blur = lerp(s.blur, targetBlur, 0.16);
+        s.glow = lerp(s.glow, targetGlow, 0.16);
 
         el.style.transform = `translate3d(${s.tx.toFixed(2)}px, ${s.ty.toFixed(2)}px, 0)`;
-        el.style.filter = s.blur > 0.02 ? `blur(${s.blur.toFixed(2)}px)` : "";
-        el.style.color = s.glow > 0.6 ? "var(--silver-blue)" : "";
-        el.style.textShadow = s.glow > 0.4 ? `0 0 ${(s.glow * 24).toFixed(0)}px var(--silver-glow)` : "";
+        el.style.filter = s.blur > 0.05 ? `blur(${s.blur.toFixed(2)}px)` : "";
+        el.style.color = s.glow > 0.65 ? "var(--silver-blue)" : "";
+        el.style.textShadow = s.glow > 0.5 ? `0 0 ${(s.glow * 18).toFixed(0)}px var(--silver-glow)` : "";
       }
       rafRef.current = requestAnimationFrame(loop);
     };
