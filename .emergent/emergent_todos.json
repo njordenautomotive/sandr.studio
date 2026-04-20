@@ -32,7 +32,7 @@
     "status": "completed"
   },
   {
-    "content": "Regression test: backend APIs + admin still work after redesign",
-    "status": "in_progress"
+    "content": "Regression test: backend APIs + admin still work after redesign (100% backend / 98% frontend)",
+    "status": "completed"
   }
 ]
