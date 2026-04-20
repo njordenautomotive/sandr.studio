@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import PageShell from "@/components/PageShell";
 import Reveal, { MaskReveal } from "@/components/Reveal";
 import AmbientOrb from "@/components/AmbientOrb";
+import SandText from "@/components/SandText";
 import { api } from "@/lib/api";
 
 const timelineOptions = ["", "ASAP (within 2 weeks)", "This month", "Next month", "Exploring — no rush"];
@@ -41,28 +42,32 @@ export default function Contact() {
 
   return (
     <PageShell testid="page-contact">
-      <section style={{ paddingTop: 220, paddingBottom: 140, position: "relative" }}>
-        <AmbientOrb color="var(--cobalt)" size={700} blur={140} opacity={0.3} style={{ left: "-8%", top: "10%" }} />
+      <section style={{ paddingTop: 200, paddingBottom: 120, position: "relative" }}>
+        <AmbientOrb color="var(--silver-blue)" size={720} blur={140} opacity={0.32} style={{ left: "-8%", top: "10%" }} />
         <AmbientOrb color="var(--violet)" size={600} blur={140} opacity={0.22} style={{ right: "-10%", bottom: "-10%" }} />
         <div className="container-x" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 80 }} className="contact-grid">
             <div>
-              <Reveal><span className="coord">Contact — Start your build</span></Reveal>
               <MaskReveal delay={0.08}>
-                <h1 className="display" style={{ fontSize: "clamp(60px, 10vw, 180px)", marginTop: 32, lineHeight: 0.88, letterSpacing: "-0.04em" }}>
-                  Tell us what needs to <span className="display-italic" style={{ color: "var(--cobalt)" }}>change</span>.
+                <h1 className="display display-heavy" style={{ fontSize: "clamp(60px, 10vw, 180px)", lineHeight: 0.88, letterSpacing: "-0.04em" }}>
+                  <SandText text="Tell us what" radius={160} strength={20} />
                 </h1>
               </MaskReveal>
-              <Reveal delay={0.2}>
-                <p style={{ marginTop: 36, color: "var(--ink-dim)", fontSize: 17, lineHeight: 1.75, maxWidth: 480 }}>
+              <MaskReveal delay={0.2}>
+                <h1 className="display display-italic" style={{ fontSize: "clamp(60px, 10vw, 180px)", lineHeight: 0.88, letterSpacing: "-0.04em", color: "var(--silver-blue)" }}>
+                  <SandText text="needs to change." radius={180} strength={28} />
+                </h1>
+              </MaskReveal>
+              <Reveal delay={0.3}>
+                <p style={{ marginTop: 40, color: "var(--ink-dim)", fontSize: 17, lineHeight: 1.75, maxWidth: 480 }}>
                   We read every submission personally. If we're the right fit, you'll hear back within 48 hours with next steps and a custom quote.
                 </p>
               </Reveal>
-              <Reveal delay={0.25}>
+              <Reveal delay={0.35}>
                 <div style={{ marginTop: 56, borderTop: "1px solid var(--line)", paddingTop: 32, display: "flex", flexDirection: "column", gap: 24 }}>
                   <div>
                     <div className="coord" style={{ color: "var(--ink-mute)" }}>Email</div>
-                    <a href="mailto:hello@sandr.studio" style={{ color: "var(--ink)", textDecoration: "none", fontSize: 22, marginTop: 8, display: "inline-block", borderBottom: "1px solid var(--line-2)", paddingBottom: 2 }}>hello@sandr.studio</a>
+                    <a href="mailto:hello@sandr.studio" style={{ color: "var(--ink)", textDecoration: "none", fontSize: 22, marginTop: 8, display: "inline-block", borderBottom: "1px solid var(--line-2)", paddingBottom: 2 }} data-cursor data-cursor-label="Write">hello@sandr.studio</a>
                   </div>
                   <div>
                     <div className="coord" style={{ color: "var(--ink-mute)" }}>Response</div>
@@ -124,7 +129,7 @@ export default function Contact() {
 
                     <div style={{ display: "flex", gap: 12, alignItems: "center", justifyContent: "space-between", marginTop: 10, flexWrap: "wrap" }}>
                       <span className="coord" style={{ color: "var(--ink-mute)" }}>We read everything.</span>
-                      <button type="submit" className="btn btn-primary" disabled={state === "submitting"} data-testid="contact-submit">
+                      <button type="submit" className="btn btn-primary" disabled={state === "submitting"} data-testid="contact-submit" data-cursor data-cursor-label="Send">
                         {state === "submitting" ? "Sending..." : "Send it"}
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M10 7h7v7" /></svg>
                       </button>
@@ -138,13 +143,13 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.6 }}
-                    style={{ border: "1px solid var(--cobalt)", padding: 56, background: "linear-gradient(180deg, rgba(74,91,255,0.06), transparent)", textAlign: "center" }}
+                    style={{ border: "1px solid var(--silver-blue)", padding: 56, background: "linear-gradient(180deg, rgba(168,198,255,0.06), transparent)", textAlign: "center" }}
                     data-testid="contact-success"
                   >
-                    <div style={{ width: 72, height: 72, borderRadius: 999, background: "var(--cobalt)", color: "#08070C", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 40px var(--cobalt-glow)" }}>
+                    <div style={{ width: 72, height: 72, borderRadius: 999, background: "var(--silver-blue)", color: "#08070C", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 40px var(--silver-glow)" }}>
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12l5 5 9-11" /></svg>
                     </div>
-                    <h3 className="display" style={{ fontSize: "clamp(44px, 6vw, 80px)", marginTop: 32, lineHeight: 0.95 }}>Got it. <span className="display-italic" style={{ color: "var(--cobalt)" }}>We're in</span>.</h3>
+                    <h3 className="display display-heavy" style={{ fontSize: "clamp(44px, 6vw, 80px)", marginTop: 32, lineHeight: 0.95 }}>Got it. <span className="display-italic" style={{ color: "var(--silver-blue)" }}>We're in</span>.</h3>
                     <p style={{ color: "var(--ink-dim)", fontSize: 16, marginTop: 18, maxWidth: 480, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7 }}>
                       We'll read it today and get back within 48 hours with next steps or a few sharper questions. Thanks for trusting sandr with this.
                     </p>

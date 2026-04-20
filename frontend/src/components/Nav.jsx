@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import EggHotspot from "@/components/EggHotspot";
 
 const links = [
   { to: "/work", label: "Work" },
@@ -28,11 +29,13 @@ export default function Nav() {
         className={`nav ${scrolled ? "scrolled" : ""}`}
         initial={{ y: -24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.0, ease: [0.7, 0, 0.1, 1], delay: 0.3 }}
+        transition={{ duration: 1.0, ease: [0.7, 0, 0.1, 1], delay: 0.2 }}
       >
         <div className="nav-inner">
-          <Link to="/" className="nav-logo" data-testid="nav-logo">
-            <span className="dot" />
+          <Link to="/" className="nav-logo" data-testid="nav-logo" data-cursor data-cursor-label="Home">
+            <EggHotspot message="You found it. Respect.">
+              <span className="dot" />
+            </EggHotspot>
             <span>sandr</span>
             <span className="ext">/studio</span>
           </Link>
@@ -43,11 +46,12 @@ export default function Nav() {
                 to={l.to}
                 className={({ isActive }) => (isActive ? "active" : "")}
                 data-testid={`nav-link-${l.label.toLowerCase()}`}
+                data-cursor data-cursor-label={`Enter ${l.label}`}
               >
                 {l.label}
               </NavLink>
             ))}
-            <Link to="/contact" className="btn btn-primary nav-cta" data-testid="nav-cta" style={{ padding: "11px 20px", fontSize: 13 }}>
+            <Link to="/contact" className="btn btn-primary nav-cta" data-testid="nav-cta" style={{ padding: "12px 22px", fontSize: 13 }} data-cursor data-cursor-label="Start">
               Start your build
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M10 7h7v7" /></svg>
             </Link>

@@ -36,7 +36,7 @@ export default function AdminLogin() {
 
   return (
     <main data-testid="page-admin-login" style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, position: "relative" }}>
-      <AmbientOrb color="var(--cobalt)" size={700} blur={140} opacity={0.35} style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }} />
+      <AmbientOrb color="var(--silver-blue)" size={700} blur={140} opacity={0.35} style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }} />
       <div className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.4, pointerEvents: "none" }} />
       <motion.form
         onSubmit={onSubmit}
@@ -45,9 +45,9 @@ export default function AdminLogin() {
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: 460, border: "1px solid var(--line)", padding: 44, background: "rgba(13, 12, 21, 0.85)", backdropFilter: "blur(12px)" }}
       >
-        <div className="coord" style={{ color: "var(--cobalt)" }}>— Studio admin · v2</div>
-        <h1 className="display" style={{ fontSize: "clamp(44px, 5.5vw, 72px)", marginTop: 20, lineHeight: 0.95 }}>
-          Welcome <span className="display-italic" style={{ color: "var(--cobalt)" }}>back</span>.
+        <div className="coord" style={{ color: "var(--silver-blue)" }}>— Studio admin · v3</div>
+        <h1 className="display display-heavy" style={{ fontSize: "clamp(44px, 5.5vw, 72px)", marginTop: 20, lineHeight: 0.95 }}>
+          Welcome <span className="display-italic" style={{ color: "var(--silver-blue)" }}>back</span>.
         </h1>
         <p style={{ marginTop: 16, color: "var(--ink-dim)", fontSize: 15 }}>Studio password required. The inbox is private.</p>
         <div className="field" style={{ marginTop: 36 }}>

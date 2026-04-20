@@ -1,38 +1,38 @@
 [
   {
-    "content": "New type system: Fraunces (variable display) + DM Sans (body) + JetBrains Mono (labels)",
+    "content": "New v3 type system: Syne (display) + Inter Tight (body)",
     "status": "completed"
   },
   {
-    "content": "New color system: deeper midnight + electric cobalt + ultraviolet + cold luminous white glow + rare burnt amber",
+    "content": "Custom cursor system with verb states (Open/Enter/Go/Start/Home + press state)",
     "status": "completed"
   },
   {
-    "content": "New motion system: kinetic word cycling, masked reveals, mouse parallax, scene transitions",
+    "content": "Sand-reactive text component — hero, final CTA, environment moment",
     "status": "completed"
   },
   {
-    "content": "Redesign Home: asymmetric cinematic hero + thesis + narrative value scenes + reinvented offer + immersive work chapters + new process + emotional closing",
+    "content": "Page intro cards for subpages (Work, Services, Process, About, Contact)",
     "status": "completed"
   },
   {
-    "content": "Redesign Work list: immersive alternating chapter spreads (no card grid)",
+    "content": "Satisfying button click animations (press scale + ripple)",
     "status": "completed"
   },
   {
-    "content": "Redesign Services/Process/About/Contact with new visual system",
+    "content": "Easter eggs (nav dot, founder names, OSL/BKK, v3 tag, v3—alive)",
     "status": "completed"
   },
   {
-    "content": "Refresh Nav + Footer + Admin with new tokens",
+    "content": "Rebuild Home: REMOVE work chapters; add environment_moment; reduce eyebrows",
     "status": "completed"
   },
   {
-    "content": "Update copy to v2 voice (bolder, confrontational, emotional)",
+    "content": "Update Nav + Footer + Work/WorkDetail/Services/Process/About/Contact",
     "status": "completed"
   },
   {
-    "content": "Regression test: backend APIs + admin still work after redesign (100% backend / 98% frontend)",
-    "status": "completed"
+    "content": "Regression test: backend + admin intact + new interactions working",
+    "status": "in_progress"
   }
 ]
