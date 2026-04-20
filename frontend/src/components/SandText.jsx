@@ -24,9 +24,19 @@ export default function SandText({ text, radius = 160, strength = 24, className 
 
   useEffect(() => {
     const onMove = (e) => { mouseRef.current = { x: e.clientX, y: e.clientY }; };
-    const onLeave = () => { mouseRef.current = { x: -9999, y: -9999 }; };
+    // Only reset when the cursor truly leaves the window (not when crossing elements).
+    const onWindowLeave = (e) => {
+      // documentElement mouseleave fires only at window edge
+      if (e.relatedTarget === null || e.toElement === null) {
+        mouseRef.current = { x: -9999, y: -9999 };
+      }
+    };
     window.addEventListener("mousemove", onMove, { passive: true });
-    window.addEventListener("mouseout", onLeave);
+    document.documentElement.addEventListener("mouseleave", onWindowLeave);
+
+    // per-letter eased state for smooth return (no CSS transitions to conflict with RAF)
+    const state = []; // { tx, ty, blur, glow }
+    const lerp = (a, b, t) => a + (b - a) * t;
 
     const loop = () => {
       const { x, y } = mouseRef.current;
@@ -34,36 +44,40 @@ export default function SandText({ text, radius = 160, strength = 24, className 
       for (let i = 0; i < letters.length; i++) {
         const el = letters[i];
         if (!el) continue;
+        if (!state[i]) state[i] = { tx: 0, ty: 0, blur: 0, glow: 0 };
+        const s = state[i];
         const r = el.getBoundingClientRect();
         const cx = r.left + r.width / 2;
         const cy = r.top + r.height / 2;
         const dx = x - cx;
         const dy = y - cy;
         const dist = Math.sqrt(dx * dx + dy * dy);
+        let targetTx = 0, targetTy = 0, targetBlur = 0, targetGlow = 0;
         if (dist < radius) {
           const p = 1 - dist / radius; // 0..1
           const angle = Math.atan2(dy, dx);
-          // push letter AWAY from cursor
-          const tx = -Math.cos(angle) * strength * p;
-          const ty = -Math.sin(angle) * strength * p;
-          const blur = Math.min(4, p * 3);
-          el.style.transform = `translate(${tx.toFixed(2)}px, ${ty.toFixed(2)}px)`;
-          el.style.filter = `blur(${blur.toFixed(2)}px)`;
-          el.style.color = p > 0.6 ? "var(--silver-blue)" : "";
-          el.style.textShadow = p > 0.4 ? `0 0 ${(p * 24).toFixed(0)}px var(--silver-glow)` : "";
-        } else {
-          el.style.transform = "";
-          el.style.filter = "";
-          el.style.color = "";
-          el.style.textShadow = "";
+          targetTx = -Math.cos(angle) * strength * p;
+          targetTy = -Math.sin(angle) * strength * p;
+          targetBlur = Math.min(4, p * 3);
+          targetGlow = p;
         }
+        // smooth approach (frame-rate independent-ish at 60fps)
+        s.tx = lerp(s.tx, targetTx, 0.18);
+        s.ty = lerp(s.ty, targetTy, 0.18);
+        s.blur = lerp(s.blur, targetBlur, 0.18);
+        s.glow = lerp(s.glow, targetGlow, 0.18);
+
+        el.style.transform = `translate3d(${s.tx.toFixed(2)}px, ${s.ty.toFixed(2)}px, 0)`;
+        el.style.filter = s.blur > 0.02 ? `blur(${s.blur.toFixed(2)}px)` : "";
+        el.style.color = s.glow > 0.6 ? "var(--silver-blue)" : "";
+        el.style.textShadow = s.glow > 0.4 ? `0 0 ${(s.glow * 24).toFixed(0)}px var(--silver-glow)` : "";
       }
       rafRef.current = requestAnimationFrame(loop);
     };
     rafRef.current = requestAnimationFrame(loop);
     return () => {
       window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mouseout", onLeave);
+      document.documentElement.removeEventListener("mouseleave", onWindowLeave);
       cancelAnimationFrame(rafRef.current);
     };
   }, [radius, strength]);

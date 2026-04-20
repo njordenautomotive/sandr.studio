@@ -48,17 +48,17 @@ export default function Contact() {
         <div className="container-x" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 80 }} className="contact-grid">
             <div>
-              <MaskReveal delay={0.08}>
+              <MaskReveal mount delay={0.08}>
                 <h1 className="display display-heavy" style={{ fontSize: "clamp(60px, 10vw, 180px)", lineHeight: 0.88, letterSpacing: "-0.04em" }}>
                   <SandText text="Tell us what" radius={160} strength={20} />
                 </h1>
               </MaskReveal>
-              <MaskReveal delay={0.2}>
+              <MaskReveal mount delay={0.2}>
                 <h1 className="display display-italic" style={{ fontSize: "clamp(60px, 10vw, 180px)", lineHeight: 0.88, letterSpacing: "-0.04em", color: "var(--silver-blue)" }}>
                   <SandText text="needs to change." radius={180} strength={28} />
                 </h1>
               </MaskReveal>
-              <Reveal delay={0.3}>
+              <Reveal mount delay={0.3}>
                 <p style={{ marginTop: 40, color: "var(--ink-dim)", fontSize: 17, lineHeight: 1.75, maxWidth: 480 }}>
                   We read every submission personally. If we're the right fit, you'll hear back within 48 hours with next steps and a custom quote.
                 </p>

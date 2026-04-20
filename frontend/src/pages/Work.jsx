@@ -13,17 +13,17 @@ export default function Work() {
       <section style={{ paddingTop: 200, paddingBottom: 80, position: "relative" }}>
         <AmbientOrb color="var(--silver-blue)" size={700} blur={140} opacity={0.35} style={{ right: "-10%", top: "10%" }} />
         <div className="container-x" style={{ position: "relative", zIndex: 2 }}>
-          <MaskReveal delay={0.08}>
+          <MaskReveal mount delay={0.08}>
             <h1 className="display display-heavy" style={{ fontSize: "clamp(72px, 12vw, 220px)", lineHeight: 0.86, letterSpacing: "-0.045em" }}>
               Not a portfolio.
             </h1>
           </MaskReveal>
-          <MaskReveal delay={0.2}>
+          <MaskReveal mount delay={0.2}>
             <h1 className="display display-italic" style={{ fontSize: "clamp(72px, 12vw, 220px)", lineHeight: 0.86, letterSpacing: "-0.045em", textAlign: "right", color: "var(--silver-blue)" }}>
               A reel.
             </h1>
           </MaskReveal>
-          <Reveal delay={0.3}>
+          <Reveal mount delay={0.3}>
             <p style={{ marginTop: 40, maxWidth: 560, color: "var(--ink-dim)", fontSize: 18, lineHeight: 1.7, marginLeft: "auto" }}>
               Concept projects we'd be proud to ship tomorrow. Real founder problems, real story-first answers, real design and motion direction.
             </p>

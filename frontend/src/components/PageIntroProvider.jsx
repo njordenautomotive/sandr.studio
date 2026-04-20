@@ -31,7 +31,7 @@ export default function PageIntroProvider({ children }) {
     const next = matchIntro(location.pathname);
     if (next) {
       setIntro({ ...next, id: Date.now() });
-      const t = setTimeout(() => setIntro(null), 1400);
+      const t = setTimeout(() => setIntro(null), 3400);
       return () => clearTimeout(t);
     }
     setIntro(null);

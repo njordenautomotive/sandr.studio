@@ -17,19 +17,19 @@ export default function WorkDetail() {
       <section style={{ paddingTop: 180, paddingBottom: 60, position: "relative" }}>
         <AmbientOrb color={project.palette[1]} size={600} blur={130} opacity={0.28} style={{ right: "-8%", top: "10%" }} />
         <div className="container-x" style={{ position: "relative", zIndex: 2 }}>
-          <Reveal>
+          <Reveal mount>
             <div style={{ display: "flex", gap: 24, color: "var(--ink-dim)", flexWrap: "wrap" }}>
               <span className="coord" style={{ color: "var(--cobalt)" }}>{project.index} · Concept</span>
               <span className="coord">{project.sector}</span>
               <span className="coord">{project.year}</span>
             </div>
           </Reveal>
-          <MaskReveal delay={0.08}>
+          <MaskReveal mount delay={0.08}>
             <h1 className="display" style={{ fontSize: "clamp(64px, 10vw, 180px)", marginTop: 30, lineHeight: 0.9, letterSpacing: "-0.04em" }}>
               {project.client}
             </h1>
           </MaskReveal>
-          <Reveal delay={0.15}>
+          <Reveal mount delay={0.15}>
             <p style={{ marginTop: 26, maxWidth: 680, color: "var(--ink-2)", fontSize: 22, lineHeight: 1.5, fontStyle: "italic" }}>
               “{project.tagline}”
             </p>

@@ -36,25 +36,25 @@ function Hero() {
       <motion.div style={{ y: yOrb2, x: sy, position: "absolute", left: "-8%", bottom: "-5%", width: 660, height: 660, borderRadius: "999px", background: "radial-gradient(circle, rgba(139,63,255,0.32), transparent 68%)", filter: "blur(80px)", pointerEvents: "none", mixBlendMode: "screen" }} />
 
       <motion.div className="container-x" style={{ position: "relative", zIndex: 2, y }}>
-        <MaskReveal delay={0.1}>
+        <MaskReveal mount delay={0.1}>
           <div className="display display-heavy" style={{ fontSize: "clamp(44px, 7.5vw, 130px)", lineHeight: 0.92, letterSpacing: "-0.04em" }}>
-            <SandText text="Story-driven websites" radius={180} strength={28} />
+            <SandText text="Story-driven websites" radius={220} strength={42} />
           </div>
         </MaskReveal>
-        <MaskReveal delay={0.25}>
+        <MaskReveal mount delay={0.25}>
           <div className="display" style={{ fontSize: "clamp(44px, 7.5vw, 130px)", lineHeight: 0.92, letterSpacing: "-0.04em", marginTop: 2 }}>
-            <SandText text="for startups that" radius={180} strength={28} />
+            <SandText text="for startups that" radius={220} strength={42} />
           </div>
         </MaskReveal>
-        <MaskReveal delay={0.4}>
+        <MaskReveal mount delay={0.4}>
           <div className="display display-italic" style={{ fontSize: "clamp(44px, 7.5vw, 130px)", lineHeight: 0.92, letterSpacing: "-0.04em", color: "var(--silver-blue)", marginTop: 2 }}>
-            <SandText text="refuse to look generic." radius={200} strength={34} />
+            <SandText text="refuse to look generic." radius={240} strength={48} />
           </div>
         </MaskReveal>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginTop: 72 }} className="hero-cap">
           <div />
-          <Reveal delay={0.85} blur>
+          <Reveal mount delay={0.85} blur>
             <p style={{ color: "var(--ink-2)", fontSize: 19, lineHeight: 1.55, maxWidth: 520 }}>
               sandr creates cinematic, full-stack startup websites that turn ideas into presence, trust, and momentum. Two weeks. Custom by default. Built to be remembered.
             </p>

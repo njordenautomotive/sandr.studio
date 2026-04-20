@@ -343,7 +343,6 @@ body::after {
 }
 .sand-text .sand-char {
     display: inline-block;
-    transition: transform 620ms var(--ease-out-expo), filter 620ms var(--ease-out-expo), color 620ms var(--ease-out-expo), text-shadow 620ms var(--ease);
     will-change: transform, filter;
 }
 

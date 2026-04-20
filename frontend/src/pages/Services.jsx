@@ -10,17 +10,17 @@ export default function Services() {
       <section style={{ paddingTop: 200, paddingBottom: 80, position: "relative" }}>
         <AmbientOrb color="var(--violet)" size={680} blur={140} opacity={0.3} style={{ left: "-8%", top: "10%" }} />
         <div className="container-x" style={{ position: "relative", zIndex: 2 }}>
-          <MaskReveal delay={0.08}>
+          <MaskReveal mount delay={0.08}>
             <h1 className="display display-heavy" style={{ fontSize: "clamp(72px, 12vw, 220px)", lineHeight: 0.86, letterSpacing: "-0.045em" }}>
               What we build.
             </h1>
           </MaskReveal>
-          <MaskReveal delay={0.2}>
+          <MaskReveal mount delay={0.2}>
             <h1 className="display display-italic" style={{ fontSize: "clamp(72px, 12vw, 220px)", lineHeight: 0.86, letterSpacing: "-0.045em", textAlign: "right", color: "var(--ink-mute)" }}>
               Not what you ordered.
             </h1>
           </MaskReveal>
-          <Reveal delay={0.3}>
+          <Reveal mount delay={0.3}>
             <p style={{ marginTop: 44, maxWidth: 640, color: "var(--ink-dim)", fontSize: 18, lineHeight: 1.7 }}>
               Prices are a <span style={{ color: "var(--ink)" }}>starting point</span>. Every project earns a custom quote — based on urgency, scope, backend, systems, and what the brand actually needs to feel like.
             </p>

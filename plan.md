@@ -9,6 +9,7 @@
   - Typography: **Syne** (display) + **Inter Tight** (body) + **JetBrains Mono** (labels)
   - Accent strategy: **silver-blue (#A8C6FF)** dominant (cursor + signature moments), cobalt emphasis, violet atmosphere, rare amber warmth
   - Interactions: **custom cursor**, **sand-reactive text**, **page intro overlays**, **satisfying click/ripple buttons**, **easter eggs**
+- ✅ Ensure **above-the-fold headings are always visible on first open** (no IO/viewport flake).
 - 🔜 (Optional next) Prepare for production + future content swapping:
   - Swap concept work → real case studies without rewriting UI.
   - Add anti-spam + notifications + export.
@@ -129,7 +130,8 @@
   - Per-letter cursor-proximity displacement (push-away), blur, silver-blue color shift, glow shadow, reform on leave
   - Applied to hero headline, environment manifesto, contact hero, and footer closing.
 - ✅ **Page intro overlays:**
-  - On navigation to **Work / Services / Process / About / Contact** a 1s full-bleed intro overlay appears with unique copy.
+  - On navigation to **Work / Services / Process / About / Contact** a full-bleed intro overlay appears with unique copy.
+  - ✅ Timing extended (+2 seconds) in the provider (now ~3.4s).
 - ✅ **Satisfying button clicks:**
   - `.btn` press compression + global click-position ripple effect (App-level handler).
 - ✅ **Easter eggs:**
@@ -146,6 +148,28 @@
   - ✅ Backend: **100% (22/22)**
   - ✅ Frontend: **99%**
   - ⚠️ Only note: a non-critical console warning about HTML structure (does not affect functionality).
+
+---
+
+### Phase 4.1 — Critical fix: hero headings invisible on initial open ✅ Completed
+**Issue (user-reported):**
+- On first open/full-screen, **none of the hero headers were visible**, leaving only nav and some body copy.
+
+**Root cause:**
+- Above-the-fold headings relied on Framer Motion `whileInView` (IntersectionObserver). On initial paint in some viewports, the observer didn’t reliably trigger, leaving `clipPath: inset(0 0 100% 0)` (masked out) until scroll/other events.
+
+**Fix shipped:**
+1. ✅ Added a `mount` prop to `Reveal` + `MaskReveal` (`/app/frontend/src/components/Reveal.jsx`).
+   - When `mount` is `true`, the component uses `animate` immediately (no IntersectionObserver).
+2. ✅ Applied `mount` to **all above-the-fold hero blocks**:
+   - Home, Work, Services, Process, Contact, About, WorkDetail.
+3. ✅ Sand text performance hardening:
+   - Removed conflicting CSS transitions on `.sand-char` (`/app/frontend/src/index.css`) that fought `requestAnimationFrame` transforms.
+   - Added **lerp-based smoothing** in `/app/frontend/src/components/SandText.jsx` so letters settle smoothly without snapping/lag.
+
+**Verification:** ✅ Completed
+- ✅ Screenshots at **1920×1080** show hero text visible within ~1.8s on load.
+- ✅ Sand-text interaction confirmed working (per-letter transforms active) and visually smooth.
 
 ---
 
@@ -178,7 +202,9 @@
 ---
 
 ## 3) Next Actions
-1. ✅ No action required to use the site as-is (**Phases 1–4 shipped; v3 is current**).
+1. 🔎 **User verification** (priority):
+   - Confirm headers are now visible on first open for you (Home + other pages).
+   - Confirm sand-text feels smooth and responsive on your machine.
 2. (Optional) Swap concept projects → real work:
    - Update `/app/frontend/src/data/projects.js` (content only).
 3. (Optional) Production hygiene:
@@ -193,12 +219,15 @@
 ---
 
 ## 4) Success Criteria
-- ✅ Brand: site feels **authored, cinematic, anti-template** and now **motion-rich + interactive** (Gen‑Z energy) without sacrificing taste.
+- ✅ Brand: site feels **authored, cinematic, anti-template** and **motion-rich + interactive** (Gen‑Z energy) without sacrificing taste.
 - ✅ Visual system (v3): **Syne + Inter Tight + JetBrains Mono**, silver-blue dominant accent, cursor-led interaction layer.
 - ✅ UX: Home reads fast, then rewards exploration via sand-text, cursor verbs, intros, easter eggs.
 - ✅ IA: Multi-page site intact; **home no longer includes work showcase** (v3 requirement met).
 - ✅ Core: contact submissions reliably persist in MongoDB; success state displayed.
 - ✅ Admin: password-gated access; submissions list + drawer detail view; status updates + delete + logout.
-- ✅ Quality: responsive on mobile/desktop; interactions do not block usability; testing passes:
+- ✅ Quality: responsive on mobile/desktop; interactions do not block usability.
+- ✅ Reliability: **above-the-fold headers render on initial open** (no IntersectionObserver flake for hero scenes).
+- ✅ Performance: sand-text runs smoothly (RAF transforms do not fight CSS transitions).
+- ✅ Testing baseline remains:
   - ✅ Backend **100% (22/22)**
   - ✅ Frontend **99%** (only non-critical console warning)

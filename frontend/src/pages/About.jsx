@@ -29,17 +29,17 @@ export default function About() {
       <section style={{ paddingTop: 200, paddingBottom: 80, position: "relative" }}>
         <AmbientOrb color="var(--silver-blue)" size={680} blur={140} opacity={0.3} style={{ right: "-10%", top: "10%" }} />
         <div className="container-x" style={{ position: "relative", zIndex: 2 }}>
-          <MaskReveal delay={0.08}>
+          <MaskReveal mount delay={0.08}>
             <h1 className="display display-heavy" style={{ fontSize: "clamp(60px, 10vw, 190px)", lineHeight: 0.88, letterSpacing: "-0.04em", maxWidth: "14ch" }}>
               Two people.
             </h1>
           </MaskReveal>
-          <MaskReveal delay={0.2}>
+          <MaskReveal mount delay={0.2}>
             <h1 className="display display-italic" style={{ fontSize: "clamp(60px, 10vw, 190px)", lineHeight: 0.88, letterSpacing: "-0.04em", color: "var(--silver-blue)" }}>
               One obsession.
             </h1>
           </MaskReveal>
-          <Reveal delay={0.3}>
+          <Reveal mount delay={0.3}>
             <p style={{ marginTop: 44, maxWidth: 640, color: "var(--ink-dim)", fontSize: 18, lineHeight: 1.75 }}>
               sandr is a founder-led studio. We take on a small handful of startups at a time, so every project gets the people who started the studio — not the people hired to grow it.
             </p>
