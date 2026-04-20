@@ -63,16 +63,16 @@ export default function CustomCursor() {
 
     let raf;
     const loop = () => {
-      // spring ring toward target
+      // spring ring toward target (tight, snappy)
       const r = ringStateRef.current;
       const t = targetRef.current;
-      r.x += (t.x - r.x) * 0.2;
-      r.y += (t.y - r.y) * 0.2;
+      r.x += (t.x - r.x) * 0.35;
+      r.y += (t.y - r.y) * 0.35;
       if (ringRef.current) ringRef.current.style.transform = `translate(${r.x}px, ${r.y}px) translate(-50%, -50%)`;
-      // aura trails slower
+      // aura trails slower (atmospheric bloom)
       const a = auraStateRef.current;
-      a.x += (t.x - a.x) * 0.06;
-      a.y += (t.y - a.y) * 0.06;
+      a.x += (t.x - a.x) * 0.08;
+      a.y += (t.y - a.y) * 0.08;
       if (auraRef.current) auraRef.current.style.transform = `translate(${a.x}px, ${a.y}px) translate(-50%, -50%)`;
       raf = requestAnimationFrame(loop);
     };

@@ -71,11 +71,11 @@ export default function SandText({ text, radius = 160, strength = 24, className 
   let idx = 0;
 
   return (
-    <span ref={wrapperRef} className={`sand-text ${className}`} style={style}>
+    <span ref={wrapperRef} className={`sand-text ${className}`} style={style} aria-label={text}>
       {parts.map((part, pi) => {
         if (/^\s+$/.test(part)) return <span key={`s-${pi}`}>{part}</span>;
         return (
-          <span key={`w-${pi}`} style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+          <span key={`w-${pi}`} style={{ display: "inline-block", whiteSpace: "nowrap" }} aria-hidden="true">
             {Array.from(part).map((ch, ci) => {
               const k = idx++;
               return (
@@ -92,7 +92,6 @@ export default function SandText({ text, radius = 160, strength = 24, className 
           </span>
         );
       })}
-      <span style={{ position: "absolute", left: -99999 }}>{text}</span>
     </span>
   );
 }

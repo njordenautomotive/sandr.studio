@@ -275,7 +275,7 @@ body::after {
     background: var(--silver-blue);
     box-shadow: 0 0 18px var(--silver-glow), 0 0 6px var(--silver-blue);
     transform: translate(-50%, -50%);
-    transition: transform 160ms var(--ease), width 240ms var(--ease), height 240ms var(--ease), background 240ms var(--ease);
+    transition: width 240ms var(--ease), height 240ms var(--ease), background 240ms var(--ease), opacity 240ms var(--ease);
     will-change: transform;
 }
 .cursor-ring {
@@ -286,7 +286,7 @@ body::after {
     border-radius: 999px;
     border: 1px solid rgba(168, 198, 255, 0.6);
     transform: translate(-50%, -50%);
-    transition: transform 420ms var(--ease-drama), width 420ms var(--ease-drama), height 420ms var(--ease-drama), border-color 420ms var(--ease), background 420ms var(--ease);
+    transition: width 420ms var(--ease-drama), height 420ms var(--ease-drama), border-color 420ms var(--ease), background 420ms var(--ease), opacity 240ms var(--ease);
     will-change: transform, width, height;
     display: flex;
     align-items: center;
@@ -331,7 +331,7 @@ body::after {
     pointer-events: none;
     z-index: 1;
     mix-blend-mode: screen;
-    transition: transform 600ms var(--ease), width 600ms var(--ease), height 600ms var(--ease), opacity 600ms var(--ease);
+    transition: width 600ms var(--ease), height 600ms var(--ease), opacity 600ms var(--ease);
     will-change: transform;
 }
 

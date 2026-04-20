@@ -15,7 +15,6 @@ function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const yOrb1 = useTransform(scrollYProgress, [0, 1], [0, -160]);
   const yOrb2 = useTransform(scrollYProgress, [0, 1], [0, 220]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -31,12 +30,12 @@ function Hero() {
   }, [mx, my]);
 
   return (
-    <section ref={ref} style={{ position: "relative", minHeight: "100vh", paddingTop: 160, paddingBottom: 80, overflow: "hidden" }} data-testid="home-hero">
+    <section ref={ref} style={{ position: "relative", paddingTop: 140, paddingBottom: 100, overflow: "hidden" }} data-testid="home-hero">
       <div className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.45, pointerEvents: "none" }} />
       <motion.div style={{ y: yOrb1, x: sx, position: "absolute", right: "-10%", top: "10%", width: 900, height: 900, borderRadius: "999px", background: "radial-gradient(circle, rgba(168,198,255,0.38) 0%, rgba(139,63,255,0.18) 45%, transparent 72%)", filter: "blur(60px)", pointerEvents: "none", mixBlendMode: "screen" }} />
       <motion.div style={{ y: yOrb2, x: sy, position: "absolute", left: "-8%", bottom: "-5%", width: 660, height: 660, borderRadius: "999px", background: "radial-gradient(circle, rgba(139,63,255,0.32), transparent 68%)", filter: "blur(80px)", pointerEvents: "none", mixBlendMode: "screen" }} />
 
-      <motion.div className="container-x" style={{ position: "relative", zIndex: 2, y, opacity, minHeight: "70vh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+      <motion.div className="container-x" style={{ position: "relative", zIndex: 2, y }}>
         <MaskReveal delay={0.1}>
           <div className="display display-heavy" style={{ fontSize: "clamp(44px, 7.5vw, 130px)", lineHeight: 0.92, letterSpacing: "-0.04em" }}>
             <SandText text="Story-driven websites" radius={180} strength={28} />
@@ -69,17 +68,17 @@ function Hero() {
           </Reveal>
         </div>
         <style>{`@media(max-width:900px){ .hero-cap { grid-template-columns: 1fr !important; gap: 24px !important; } }`}</style>
-      </motion.div>
 
-      <div className="container-x" style={{ position: "absolute", left: 0, right: 0, bottom: 36, display: "flex", justifyContent: "space-between", alignItems: "end", zIndex: 3, flexWrap: "wrap", gap: 12 }}>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.3 }} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <span className="coord" style={{ color: "var(--silver-blue)" }}>— MOVE OVER THE TEXT</span>
-          <motion.div animate={{ scaleY: [0.3, 1, 0.3], originY: 0 }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} style={{ width: 1, height: 56, background: "linear-gradient(180deg, var(--silver-blue), transparent)" }} />
-        </motion.div>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.3 }} className="coord" style={{ color: "var(--ink-mute)" }}>
-          sandr.studio · 2026 · <EggHotspot message="Built somewhere between oslo & bangkok."><span style={{ borderBottom: "1px dashed var(--line-2)" }}>OSL / BKK</span></EggHotspot>
-        </motion.div>
-      </div>
+        <div style={{ marginTop: 100, display: "flex", justifyContent: "space-between", alignItems: "end", flexWrap: "wrap", gap: 16 }}>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.3 }} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <span className="coord" style={{ color: "var(--silver-blue)" }}>— MOVE OVER THE TEXT</span>
+            <motion.div animate={{ scaleY: [0.3, 1, 0.3], originY: 0 }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} style={{ width: 1, height: 56, background: "linear-gradient(180deg, var(--silver-blue), transparent)" }} />
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.3 }} className="coord" style={{ color: "var(--ink-mute)" }}>
+            sandr.studio · 2026 · <EggHotspot message="Built somewhere between oslo & bangkok."><span style={{ borderBottom: "1px dashed var(--line-2)" }}>OSL / BKK</span></EggHotspot>
+          </motion.div>
+        </div>
+      </motion.div>
     </section>
   );
 }
