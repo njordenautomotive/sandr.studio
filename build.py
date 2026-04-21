@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).parent
 FRONTEND_DIR = ROOT_DIR / "frontend"
 FRONTEND_BUILD_DIR = FRONTEND_DIR / "build"
-PUBLIC_DIR = ROOT_DIR / "public"
+PUBLIC_DIR = ROOT_DIR / "backend" / "public"
 
 
 def run(command: list[str], cwd: Path, env: dict[str, str] | None = None) -> None:
