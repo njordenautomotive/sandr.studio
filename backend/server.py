@@ -1,5 +1,7 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, status, Header
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
@@ -15,6 +17,8 @@ import jwt as pyjwt
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
+FRONTEND_DIR = ROOT_DIR.parent / "public"
+FRONTEND_INDEX = FRONTEND_DIR / "index.html"
 
 # MongoDB connection
 mongo_url = os.environ.get("MONGO_URL")
@@ -204,6 +208,9 @@ async def delete_submission(submission_id: str, _user: dict = Depends(require_ad
 
 
 app.include_router(api_router)
+if (FRONTEND_DIR / "static").exists():
+    app.mount("/static", StaticFiles(directory=FRONTEND_DIR / "static"), name="frontend-static")
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
@@ -214,6 +221,18 @@ app.add_middleware(
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+
+@app.get("/{full_path:path}", include_in_schema=False)
+async def serve_frontend(full_path: str):
+    if not FRONTEND_INDEX.exists():
+        raise HTTPException(status_code=404, detail="Not Found")
+
+    requested_path = (FRONTEND_DIR / full_path).resolve()
+    if full_path and requested_path.is_file() and FRONTEND_DIR.resolve() in requested_path.parents:
+        return FileResponse(requested_path)
+
+    return FileResponse(FRONTEND_INDEX)
 
 
 @app.on_event("shutdown")
