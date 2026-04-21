@@ -17,7 +17,7 @@ import jwt as pyjwt
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
-FRONTEND_DIR = ROOT_DIR.parent / "public"
+FRONTEND_DIR = ROOT_DIR / "public"
 FRONTEND_INDEX = FRONTEND_DIR / "index.html"
 
 # MongoDB connection
