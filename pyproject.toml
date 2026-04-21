@@ -1,0 +1,10 @@
+[project]
+name = "sandr-studio"
+version = "0.1.0"
+requires-python = ">=3.9"
+
+[project.scripts]
+app = "backend.server:app"
+
+[tool.vercel.scripts]
+build = "python build.py"
