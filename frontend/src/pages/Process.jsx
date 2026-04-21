@@ -67,7 +67,7 @@ export default function Process() {
           <Reveal>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 0, border: "1px solid var(--line)" }}>
               {[
-                { k: "1", v: "Founder, not account manager" },
+                { k: "2", v: "Founders, not account managers" },
                 { k: "0", v: "Templates. Ever." },
                 { k: "2 wks", v: "Kickoff → live site" },
                 { k: "∞", v: "Revisions on story¹" },

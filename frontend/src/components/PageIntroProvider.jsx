@@ -53,7 +53,7 @@ export default function PageIntroProvider({ children }) {
               className="page-intro-surface"
               initial={{ clipPath: "inset(0 0 0 0)" }}
               animate={{ clipPath: "inset(0 0 0 0)" }}
-              exit={{ clipPath: "inset(100% 0 0 0)", transition: { duration: 0.8, ease: [0.7, 0, 0.1, 1] } }}
+              exit={{ clipPath: "inset(100% 0 0 0)", transition: { duration: 0.5, ease: [0.7, 0, 0.1, 1] } }}
             />
             <motion.div
               className="page-intro-text"
