@@ -2,7 +2,7 @@ from fastapi import FastAPI, APIRouter, HTTPException, Depends, status, Header
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
-from motor.motor_asyncio import AsyncIOMotorClient
+from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 import os
 import logging
 from pathlib import Path
@@ -17,9 +17,14 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+mongo_url = os.environ.get("MONGO_URL")
+db_name = os.environ.get("DB_NAME")
+client: Optional[AsyncIOMotorClient] = None
+db: Optional[AsyncIOMotorDatabase] = None
+
+if mongo_url and db_name:
+    client = AsyncIOMotorClient(mongo_url)
+    db = client[db_name]
 
 ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'sandr-admin-2026')
 JWT_SECRET = os.environ.get('JWT_SECRET', 'sandr_studio_secret_key_change_in_prod')
@@ -99,6 +104,15 @@ def create_token() -> str:
     return pyjwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGO)
 
 
+def require_db() -> AsyncIOMotorDatabase:
+    if db is None:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Database is not configured for this deployment",
+        )
+    return db
+
+
 async def require_admin(credentials: Optional[HTTPAuthorizationCredentials] = Depends(security)) -> dict:
     if credentials is None or not credentials.credentials:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Missing credentials")
@@ -126,10 +140,11 @@ async def health():
 
 @api_router.post("/contact", response_model=ContactSubmission, status_code=201)
 async def create_contact(payload: ContactSubmissionCreate):
+    database = require_db()
     submission = ContactSubmission(**payload.model_dump())
     doc = submission.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
-    await db.contact_submissions.insert_one(doc)
+    await database.contact_submissions.insert_one(doc)
     return submission
 
 
@@ -148,14 +163,16 @@ async def admin_me(_user: dict = Depends(require_admin)):
 
 @api_router.get("/admin/submissions", response_model=List[ContactSubmission])
 async def list_submissions(_user: dict = Depends(require_admin)):
-    cursor = db.contact_submissions.find({}).sort("created_at", -1)
+    database = require_db()
+    cursor = database.contact_submissions.find({}).sort("created_at", -1)
     items = await cursor.to_list(length=1000)
     return [ContactSubmission(**serialize_doc(x)) for x in items]
 
 
 @api_router.get("/admin/submissions/{submission_id}", response_model=ContactSubmission)
 async def get_submission(submission_id: str, _user: dict = Depends(require_admin)):
-    doc = await db.contact_submissions.find_one({"id": submission_id})
+    database = require_db()
+    doc = await database.contact_submissions.find_one({"id": submission_id})
     if not doc:
         raise HTTPException(status_code=404, detail="Not found")
     return ContactSubmission(**serialize_doc(doc))
@@ -163,10 +180,11 @@ async def get_submission(submission_id: str, _user: dict = Depends(require_admin
 
 @api_router.patch("/admin/submissions/{submission_id}", response_model=ContactSubmission)
 async def update_submission_status(submission_id: str, body: StatusUpdateRequest, _user: dict = Depends(require_admin)):
+    database = require_db()
     allowed = {"new", "read", "replied", "archived"}
     if body.status not in allowed:
         raise HTTPException(status_code=400, detail=f"status must be one of {sorted(allowed)}")
-    doc = await db.contact_submissions.find_one_and_update(
+    doc = await database.contact_submissions.find_one_and_update(
         {"id": submission_id},
         {"$set": {"status": body.status}},
         return_document=True,
@@ -178,7 +196,8 @@ async def update_submission_status(submission_id: str, body: StatusUpdateRequest
 
 @api_router.delete("/admin/submissions/{submission_id}")
 async def delete_submission(submission_id: str, _user: dict = Depends(require_admin)):
-    result = await db.contact_submissions.delete_one({"id": submission_id})
+    database = require_db()
+    result = await database.contact_submissions.delete_one({"id": submission_id})
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Not found")
     return {"deleted": True}
@@ -199,4 +218,5 @@ logger = logging.getLogger(__name__)
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
-    client.close()
+    if client is not None:
+        client.close()
